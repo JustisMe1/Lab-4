@@ -11,7 +11,7 @@
     "pug": "^3.0.2"
   },
   "name": "lab4_jennifer-justis",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Part 1 - Project Setup",
   "main": "index.pug",
   "devDependencies": {},

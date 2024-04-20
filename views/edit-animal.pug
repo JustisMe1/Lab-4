@@ -1,20 +1,48 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible" content="ie=edge")
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
-
-        script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js", integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+", crossorigin="anonymous")
-        script(src='./scripts/script.js')
-        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css", integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN", crossorigin="anonymous")
-        link(rel="stylesheet", href="./styles/styles.css")
-
-        title=pageTitle
-    body
-        include ./partials/_navbar
-
-        .container.col-lg-6 
-            include ./partials/_title
-            block content
-            include ./partials/_entry-form
+extends ./layouts/main
+block content
+    include ./partials/_title
+    
+    form.border.p-4(method='post')
+        label.form-label(for="ID") Animal ID #
+        input.form-control(id="ID", value=id, disabled=true)
+        input(type="hidden", name="id", value=id)
+        label.form-label(for="zoo") Home Zoo
+        input.form-control(type="text", id="zoo", name="zoo", value=zoo, required)
+        label.form-label(for="sctName") Scientific Name
+        input.form-control(type="text", id="sctName", name="sctName", value=sctName, required)
+        label.form-label(for="comName") Common Name
+        input.form-control(type="text", id="comName", name="comName", value=comName, required)
+        if(gender == "Male")
+            div.form-group
+                p="Gender"
+                input(name="gender" type="radio", id="male", value="male", checked="true", required)
+                label.form-label(for="male") Male
+                input(name="gender" type="radio", id="female", value="female", required)
+                label.form-label(for="female") Female
+        else
+            div.form-group
+                p="Gender"
+                input(name="gender" type="radio", id="male", value="male", required)
+                label.form-label(for="male") Male
+                input(name="gender" type="radio", id="female", value="female", checked="true", required)
+                label.form-label(for="female") Female
+        label.form-label(for="dob") Date of Birth
+        input.form-control(type="date", id="dob", name="dob", value=dob, required)
+        label.form-label(for="age") Age
+        input.form-control(type="number", id="age", name="age", value=age, required)
+        if(canTransport)
+            div.form-group
+                p="Is Transportable"
+                input(name="canTransport" type="radio", id="true", value="true", checked, required)
+                label.form-label(for="true") True
+                input(name="canTransport" type="radio", id="false", value="false", required)
+                label.form-label(for="false") False
+        else
+            div.form-group
+                p="Is Transportable"
+                input(name="canTransport" type="radio", id="true", value="true", required)
+                label.form-label(for="true") True
+                input(name="canTransport" type="radio", id="false", value="false", checked, required)
+                label.form-label(for="false") False
+        input.btn.btn-primary(type="submit", formaction="/update-animal", value="Update Record Changes")
+        input.btn.btn-primary(type="submit", formaction="/delete-animal", value="Delete Record" )

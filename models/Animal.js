@@ -11,13 +11,14 @@ mongoose.connect(conn);
 // Creates simple schema for a User. 
 // The hash and salt are derived from the user's given password when they register
 const AnimalSchema = new mongoose.Schema({
+    ID: Number,
 	Zoo: { type: String, required: true},
     ScientificName: { type: String, required: true },
     CommonName: { type: String, required: true },
     Gender: { type: String, required: true },
     DateOfBirth: { type: Date, required: true },
     Age: { type: Number, required: true },
-    isTransportable: { type: Boolean, required: true, default: false }
+    CanTransport: { type: Boolean, required: true, default: false }
 });
 
 // Expose the connection

@@ -14,11 +14,11 @@
   "version": "1.0.1",
   "description": "Part 1 - Project Setup",
   "main": "index.pug",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
   "author": "Jennifer Murphy, Justis McGill",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {}
 }

@@ -1,0 +1,29 @@
+extends ./layouts/main
+block content
+    include ./partials/_title
+    
+    form.border.p-4(method='post')
+        input(type="hidden", name="ID" value=ID)
+        label.form-label(for="zoo") Home Zoo
+        input.form-control(type="text", id="zoo", name="zoo", required)
+        label.form-label(for="sctName") Scientific Name
+        input.form-control(type="text", id="sctName", name="sctName", required)
+        label.form-label(for="comName") Common Name
+        input.form-control(type="text", id="comName", name="comName", required)
+        div.form-group
+            p="Gender"
+            input(name="gender" type="radio", id="male", value="male", required)
+            label.form-label(for="male") Male
+            input(name="gender" type="radio", id="female", value="female", required)
+            label.form-label(for="female") Female
+        label.form-label(for="dob") Date of Birth
+        input.form-control(type="date", id="dob", name="dob", required)
+        label.form-label(for="age") Age
+        input.form-control(type="number", id="age", name="age", required)
+        div.form-group
+            p="Is Transportable"
+            input(name="canTransport" type="radio", id="true", value="true", required)
+            label.form-label(for="true") True
+            input(name="canTransport" type="radio", id="false", value="false", required)
+            label.form-label(for="false") False
+        input.btn.btn-primary(type="submit", formaction="/add-animal", value="Add New Record")

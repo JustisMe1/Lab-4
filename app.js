@@ -8,6 +8,7 @@ const app = express();
 //use port from env or default to 3000
 const PORT = process.env.PORT || 3000;
 
+app.use(express.urlencoded({extended: false}));
 //configure routes
 app.use('/', animal);
 
